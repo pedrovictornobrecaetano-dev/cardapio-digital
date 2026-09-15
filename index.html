@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Royale | Cardápio Digital</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topo">
+  <div class="marca">
+    <span class="simbolo">✦</span>
+    <div><h1>Maison Royale</h1><p>Cardápio Digital</p></div>
+  </div>
+  <button class="carrinho-top" onclick="document.getElementById('pedido').scrollIntoView({behavior:'smooth'})">Meu Pedido <span id="contador">0</span></button>
+</header>
+
+<section class="hero">
+  <div>
+    <p class="eyebrow">RESTAURANTE & GASTRONOMIA</p>
+    <h2>Sabores para <em>momentos especiais.</em></h2>
+    <p>Explore nosso cardápio, escolha seus pratos e monte seu pedido com facilidade.</p>
+  </div>
+</section>
+
+<main class="layout">
+  <section class="catalogo">
+    <nav id="menuCategorias" class="categorias"></nav>
+    <div class="controles">
+      <input id="pesquisa" type="search" placeholder="🔎  Pesquisar produto..." oninput="renderProdutos()">
+      <select id="filtro" onchange="renderProdutos()"></select>
+      <select id="ordenacao" onchange="renderProdutos()">
+        <option value="padrao">Ordenação: padrão</option>
+        <option value="menor">Menor preço</option>
+        <option value="maior">Maior preço</option>
+        <option value="az">Nome A-Z</option>
+      </select>
+    </div>
+    <div id="listaProdutos" class="grid"></div>
+  </section>
+
+  <aside id="pedido" class="pedido">
+    <div class="pedido-head"><div><p class="eyebrow">SEU PEDIDO</p><h2>Meu Pedido</h2></div><span id="badgePedido">0 itens</span></div>
+    <div id="itensPedido" class="itens"></div>
+    <div id="vazio" class="vazio">Seu pedido está vazio.<br>Adicione seus pratos favoritos!</div>
+    <div class="resumo">
+      <div><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+      <label class="taxa"><span>10% do garçom</span><input type="checkbox" id="garcom" onchange="atualizarPedido()"></label>
+      <div><span>Garçom (10%)</span><strong id="valorGarcom">R$ 0,00</strong></div>
+      <div class="total"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+    </div>
+    <button class="finalizar" onclick="abrirFinalizacao()">FINALIZAR PEDIDO</button>
+  </aside>
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <button class="fechar" onclick="fecharModal()">×</button>
+    <div id="modalConteudo"></div>
+  </div>
+</div>
+
+<footer><strong>Maison Royale</strong> · Gastronomia & Experiência · Cardápio Digital</footer>
+<script src="script.js"></script>
+</body>
+</html>
